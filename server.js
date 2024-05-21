@@ -41,14 +41,9 @@ async function getFollowersCount(url) {
         await browser.close();
     }
 }
-app.use("/" , (req,res)=>{
-    res.json({
-        status:"Api working" ,
-        code:200
-    })
-})
+
 // API endpoint
-app.post('/get-followers-count', async (req, res) => {
+app.post('/x', async (req, res) => {
     const { abc } = req.body;
 
     if (!Array.isArray(abc)) {
@@ -69,7 +64,12 @@ app.post('/get-followers-count', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-
+app.use("/" , (req,res)=>{
+    res.json({
+        status:"Api working" ,
+        code:200
+    })
+})
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
     
